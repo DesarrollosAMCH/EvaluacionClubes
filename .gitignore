@@ -13,3 +13,6 @@ storage/
 .env.php
 .env
 .env.example
+
+#PHPStorm IDE
+.idea
