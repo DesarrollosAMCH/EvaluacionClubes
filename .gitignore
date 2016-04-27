@@ -12,7 +12,6 @@ storage/
 .env.*.php
 .env.php
 .env
-.env.example
 
 #PHPStorm IDE
 .idea
