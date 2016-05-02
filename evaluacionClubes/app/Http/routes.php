@@ -12,6 +12,12 @@
 */
 
 Route::get('/', 'LoginController@login');
-
 Route::get('/admin', 'Admin\DashboardController@index');
 
+
+
+/**
+ * Evaluaciones routes
+ */
+Route::get('/admin/evaluaciones', 'Admin\EvaluacionController@listar');
+Route::get('/admin/evaluaciones/nueva', 'Admin\EvaluacionController@nueva');
