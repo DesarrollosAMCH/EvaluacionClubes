@@ -13,3 +13,5 @@
 
 Route::get('/', 'LoginController@login');
 
+Route::get('/admin', 'Admin\DashboardController@index');
+
