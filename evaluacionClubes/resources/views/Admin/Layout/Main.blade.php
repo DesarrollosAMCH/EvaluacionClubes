@@ -137,9 +137,9 @@
 
             </nav>
         </div>
-        <div class="sidebard-panel">
+        <!--<div class="sidebard-panel">
             @include('Admin.Layout.LeftSidebar')
-        </div>
+        </div>-->
         <div class="wrapper wrapper-content">
             @yield('content')
         </div>
@@ -154,5 +154,6 @@
 </div>
 
 @include('Admin.Layout.MetaFooter')
+@yield('extra-js')
 </body>
 </html>
