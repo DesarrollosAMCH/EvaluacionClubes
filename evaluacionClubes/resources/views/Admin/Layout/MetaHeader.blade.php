@@ -7,6 +7,8 @@
 <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
+@yield('extra-meta-head')
+
 
 <link href="/assets/css/plugins/iCheck/custom.css" rel="stylesheet">
 <link href="/assets/css/animate.css" rel="stylesheet">

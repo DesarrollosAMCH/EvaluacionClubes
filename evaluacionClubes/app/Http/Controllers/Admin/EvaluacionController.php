@@ -15,4 +15,12 @@ class EvaluacionController extends Controller
     public function listar(){
         return view('Admin.Evaluaciones.ListarEvaluaciones');
     }
+
+    public function saveTemporada(Request $request){
+
+        $nombre = $request->get('nombre_temporada');
+        $datrage = $request->get('daterange');
+
+        var_dump($datrage);
+    }
 }

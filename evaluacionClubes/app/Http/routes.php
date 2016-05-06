@@ -21,3 +21,4 @@ Route::get('/admin', 'Admin\DashboardController@index');
  */
 Route::get('/admin/evaluaciones', 'Admin\EvaluacionController@listar');
 Route::get('/admin/evaluaciones/nueva', 'Admin\EvaluacionController@nueva');
+Route::post('/admin/evaluaciones/crear-temorada', 'Admin\EvaluacionController@saveTemporada');

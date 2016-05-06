@@ -27,47 +27,129 @@
                 <p>
                     This is basic example of Step
                 </p>
-                <div id="wizard" role="application" class="wizard clearfix"><div class="steps clearfix"><ul role="tablist"><li role="tab" class="first current" aria-disabled="false" aria-selected="true"><a id="wizard-t-0" href="#wizard-h-0" aria-controls="wizard-p-0"><span class="current-info audible">current step: </span><span class="number">1.</span> First Step</a></li><li role="tab" class="done" aria-disabled="false" aria-selected="false"><a id="wizard-t-1" href="#wizard-h-1" aria-controls="wizard-p-1"><span class="number">2.</span> Second Step</a></li><li role="tab" class="disabled last" aria-disabled="true"><a id="wizard-t-2" href="#wizard-h-2" aria-controls="wizard-p-2"><span class="number">3.</span> Third Step</a></li></ul></div><div class="content clearfix">
-                        <h1 id="wizard-h-0" tabindex="-1" class="title current">First Step</h1>
-                        <div class="step-content body current" id="wizard-p-0" role="tabpanel" aria-labelledby="wizard-h-0" aria-hidden="false" style="display: block;">
-                            <div class="text-center m-t-md">
-                                <h2>Hello in Step 1</h2>
-                                <p>
-                                    This is the first content.
-                                </p>
-                            </div>
-                        </div>
 
-                        <h1 id="wizard-h-1" tabindex="-1" class="title">Second Step</h1>
-                        <div class="step-content body" id="wizard-p-1" role="tabpanel" aria-labelledby="wizard-h-1" aria-hidden="true" style="display: none;">
-                            <div class="text-center m-t-md">
-                                <h2>This is step 2</h2>
-                                <p>
-                                    This content is diferent than the first one.
-                                </p>
-                            </div>
-                        </div>
+                <div id="wizard">
+                    <h3>Temporada</h3>
+                    <section>
 
-                        <h1 id="wizard-h-2" tabindex="-1" class="title">Third Step</h1>
-                        <div class="step-content body" id="wizard-p-2" role="tabpanel" aria-labelledby="wizard-h-2" aria-hidden="true" style="display: none;">
-                            <div class="text-center m-t-md">
-                                <h2>This is step 3</h2>
-                                <p>
-                                    This is last content.
-                                </p>
+                        <form id="temporada_form">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Titulo de la temporada</label>
+                                    <input type="text" name="nombre_temporada" value="Ejemplo" placeholder="Ejemplo: Bimensual Abril-Mayo" class="form-control required"  />
+                                </div>
                             </div>
-                        </div>
-                    </div><div class="actions clearfix"><ul role="menu" aria-label="Pagination"><li class="disabled" aria-disabled="true"><a href="#previous" role="menuitem">Previous</a></li><li aria-hidden="false" aria-disabled="false"><a href="#next" role="menuitem">Next</a></li><li aria-hidden="false"><a href="#finish" role="menuitem">Finish</a></li><li><a href="#cancel" role="menuitem">Cancel</a></li></ul></div></div>
 
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Inicio - Fin de temporada</label>
+                                    <input type="text" name="daterange" value="" class="form-control required" />
+                                </div>
+                            </div>
+                        </form>
+
+                    </section>
+
+                    <h3>Requisitos</h3>
+                    <section>
+                        <p>Wonderful transition effects.</p>
+                    </section>
+                    <h3>Paso 3</h3>
+                    <section>
+                        <p>The next and previous buttons help you to navigate through your content.</p>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
 @endsection
 
+@section('extra-meta-head')
+<link href="/assets/css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
+@endsection
+
+@section('extra-meta-footer')
+<!-- Date range use moment.js same as full calendar plugin -->
+<script src="/assets/js/plugins/fullcalendar/moment.min.js"></script>
+<!-- Date range picker -->
+<script src="/assets/js/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Steps -->
+<script src="/assets/js/plugins/staps/jquery.steps.min.js"></script>
+@endsection
+
 @section('extra-js')
     <script>
+        saveTemporada = function(form){
+            var url = '/admin/evaluaciones/crear-temorada';
+            var data = {
+                form : form.serialize()
+            };
+            console.log(data);
+            $.post(url, data, function(response){
+                console.log(response);
+            });
+        };
+
+
         $(document).ready(function() {
-            $("#wizard").steps();
+            $("#wizard").steps({
+                headerTag: "h3",
+                bodyTag: "section",
+                transitionEffect: "slideLeft",
+                autoFocus: true,
+                onStepChanging: function (event, currentIndex, newIndex)
+                {
+                    var continuar = false;
+
+                    if(currentIndex == 0){
+                        formTemp.validate().settings.ignore = ":disabled,:hidden";
+                        if(formTemp.valid()){
+                            saveTemporada(formTemp);
+                            continuar = true;
+                        }
+                    }
+                    return (continuar || newIndex < currentIndex);
+                },
+            });
+            $('input[name="daterange"]').daterangepicker({
+                locale: {
+                    "format": 'YYYY/DD/MM',
+                    "applyLabel": "Seleccionar",
+                    "cancelLabel": "Cancelar",
+                    "fromLabel": "Desde",
+                    "toLabel": "Hasta",
+                    "daysOfWeek": [
+                        "Dom",
+                        "Lun",
+                        "Mar",
+                        "Mie",
+                        "Jue",
+                        "Vi",
+                        "Sa"
+                    ],
+                    "monthNames": [
+                        "Enera",
+                        "Febrero",
+                        "Marzo",
+                        "Abril",
+                        "Mayo",
+                        "Junio",
+                        "Julio",
+                        "Agosto",
+                        "Septiembre",
+                        "Octubre",
+                        "Noviembre",
+                        "Diciembre"
+                    ]
+                },
+                "startDate": "04/01/2016",
+                "endDate": "06/30/2016"
+            });
+
+            var formTemp = $("#temporada_form");
+            formTemp.validate()
+
         });
     </script>
 
