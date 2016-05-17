@@ -83,9 +83,10 @@
         saveTemporada = function(form){
             var url = '/admin/evaluaciones/crear-temorada';
             var data = {
-                form : form.serialize()
+                nombre_temporada : form.find("input[name='nombre_temporada']").val(),
+                daterange : form.find("input[name='daterange']").val(),
+                _token: form.find("input[name='_token']").val()
             };
-            console.log(data);
             $.post(url, data, function(response){
                 console.log(response);
             });
