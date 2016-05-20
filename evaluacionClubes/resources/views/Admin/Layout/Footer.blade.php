@@ -1,6 +1,6 @@
 <div class="pull-right">
-    10GB of <strong>250GB</strong> Free.
+    Desarrollos <strong>AMCH</strong>.
 </div>
 <div>
-    <strong>Copyright</strong> Example Company &copy; 2014-2015
+    <strong>Copyright</strong> Conquistadores AMCH &copy; 2016
 </div>

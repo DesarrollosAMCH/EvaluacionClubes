@@ -53,7 +53,29 @@
 
                     <h3>Requisitos</h3>
                     <section>
-                        <p>Wonderful transition effects.</p>
+                        <p>Añadir información e los requisitos.</p>
+
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Valor</th>
+                                <th>Categoria</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a data-toggle="modal" class="btn btn-primary" href="#modal-form"><i class="fa fa-plus"></i></a>
+
+
                     </section>
                     <h3>Paso 3</h3>
                     <section>
@@ -63,7 +85,76 @@
             </div>
         </div>
     </div>
-@endsection
+
+    <div id="modal-form" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 b-r"><h3 class="m-t-none m-b">Sign in</h3>
+
+                                <p>Sign in today for more expirience.</p>
+
+                                <!--<form role="form">
+                                    <div class="form-group"><label>Email</label> <input type="email" placeholder="Enter email" class="form-control"></div>
+                                    <div class="form-group"><label>Password</label> <input type="password" placeholder="Password" class="form-control"></div>
+                                    <div>
+                                        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Log in</strong></button>
+                                        <label> <input type="checkbox" class="i-checks"> Remember me </label>
+                                    </div>
+                                </form>-->
+                                <form id="temporada_form">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Categoria</label>
+                                            <select name="requisito[0]['categoria']" class="form-control required">
+                                                <option>Seleccionar una categoria</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Nombre</label>
+                                            <input type="text" name="requisito[0]['nombre']" value="Ejemplo" placeholder="Ejemplo: Bimensual Abril-Mayo" class="form-control required"  />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Descripción</label>
+                                            <textarea name="requisito[0]['descripcion']" class="form-control required"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Valor (puntos)</label>
+                                            <input type="number" name="requisito[0]['valor']" value="30" placeholder="150" class="form-control required"  />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Fecha Inicio - Fin</label>
+                                            <input type="text" name="requisito[0]['daterange']" value="" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <button class="btn btn-md btn-primary pull-right" type="submit"><strong>Agregar</strong></button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @endsection
 
 @section('extra-meta-head')
 <link href="/assets/css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
@@ -101,7 +192,7 @@
                 autoFocus: true,
                 onStepChanging: function (event, currentIndex, newIndex)
                 {
-                    var continuar = false;
+                    var continuar = true;
 
                     if(currentIndex == 0){
                         formTemp.validate().settings.ignore = ":disabled,:hidden";
