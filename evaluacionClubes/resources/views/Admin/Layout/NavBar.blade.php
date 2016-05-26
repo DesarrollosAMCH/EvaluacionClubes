@@ -25,7 +25,7 @@
         <li>
             <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Clubes</span><span class="fa arrow"></span></a>
             <ul class="nav nav-second-level collapse">
-                <li><a href="graph_flot.html">Clubes Inscritos</a></li>
+                <li><a href="/admin/clubes">Clubes Inscritos</a></li>
             </ul>
         </li>
         <li>

@@ -87,19 +87,11 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-sm-12 b-r"><h3 class="m-t-none m-b">Sign in</h3>
+                            <div class="col-sm-12 b-r"><h3 class="m-t-none m-b">Requisitos</h3>
 
-                                <p>Sign in today for more expirience.</p>
+                                <p>Complete el fomulario para agregar un agregar/modificar un requisito.</p>
 
-                                <!--<form role="form">
-                                    <div class="form-group"><label>Email</label> <input type="email" placeholder="Enter email" class="form-control"></div>
-                                    <div class="form-group"><label>Password</label> <input type="password" placeholder="Password" class="form-control"></div>
-                                    <div>
-                                        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Log in</strong></button>
-                                        <label> <input type="checkbox" class="i-checks"> Remember me </label>
-                                    </div>
-                                </form>-->
-                                <form id="temporada_form">
+                                <form id="requisitos_form">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                     <div class="col-lg-12">
@@ -107,6 +99,9 @@
                                             <label>Categoria</label>
                                             <select name="requisito[0]['categoria']" class="form-control required">
                                                 <option>Seleccionar una categoria</option>
+                                                @foreach( $oCategoriasList as $categoria )
+                                                    <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -139,7 +134,7 @@
                                     </div>
 
                                     <div class="col-lg-12">
-                                        <button class="btn btn-md btn-primary pull-right" type="submit"><strong>Agregar</strong></button>
+                                        <button class="btn btn-md btn-primary pull-right" type="submit"><strong>Guardar</strong></button>
                                     </div>
 
                                 </form>
@@ -166,12 +161,28 @@
 @endsection
 
 @section('extra-js')
+    <script src="{{ URL::asset('assets/js/utils.js') }}"></script>
     <script>
         saveTemporada = function(form){
             var url = '/admin/evaluaciones/crear-temorada';
             var data = {
                 nombre_temporada : form.find("input[name='nombre_temporada']").val(),
                 daterange : form.find("input[name='daterange']").val(),
+                _token: form.find("input[name='_token']").val()
+            };
+            $.post(url, data, function(response){
+                console.log(response);
+            });
+        };
+
+        saveRequisito = function(form){
+            var url = '/admin/evaluaciones/crear-temorada';
+            var data = {
+                categoria   : form.find("select[name='categoria']").val(),
+                nombre      : form.find("input[name='nombre']").val(),
+                temporada   : form.find("input[name='temporada_id']").val(),
+                daterange   : form.find("input[name='daterange']").val(),
+
                 _token: form.find("input[name='_token']").val()
             };
             $.post(url, data, function(response){
