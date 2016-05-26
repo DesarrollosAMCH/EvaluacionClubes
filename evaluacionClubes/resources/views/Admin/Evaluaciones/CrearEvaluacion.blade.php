@@ -40,7 +40,6 @@
                                     <input type="text" name="nombre_temporada" value="Ejemplo" placeholder="Ejemplo: Bimensual Abril-Mayo" class="form-control required"  />
                                 </div>
                             </div>
-
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Inicio - Fin de temporada</label>
@@ -48,7 +47,6 @@
                                 </div>
                             </div>
                         </form>
-
                     </section>
 
                     <h3>Requisitos</h3>
@@ -74,8 +72,6 @@
                             </tbody>
                         </table>
                         <a data-toggle="modal" class="btn btn-primary" href="#modal-form"><i class="fa fa-plus"></i></a>
-
-
                     </section>
                     <h3>Paso 3</h3>
                     <section>
