@@ -1,7 +1,7 @@
 @extends('Admin.Layout.Main')
 
 @section('content')
-    <div class="col-lg-6">
+    <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>Lista de Clubes inscritos</h5>

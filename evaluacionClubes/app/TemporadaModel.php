@@ -12,4 +12,16 @@ class TemporadaModel extends Model
      * @var string
      */
     protected $table = 'temporadas';
+
+    public function requisitos(){return $this->hasMany('App\RequisitoModel','idTemporada','id');}
+
+
+    public static function findTreeToArray($id){
+        $oTemporada =  TemporadaModel::where('id',$id);
+        if ( is_object( $oTemporada) ){
+            return $oTemporada->with('requisitos.categoria')->get()->first();
+        }else{
+            return false;
+        }
+    }
 }

@@ -4,29 +4,17 @@
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Basic Wizzard</h5>
+                <h5>Evaluaciones</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
                     </a>
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-wrench"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#">Config option 1</a>
-                        </li>
-                        <li><a href="#">Config option 2</a>
-                        </li>
-                    </ul>
                     <a class="close-link">
                         <i class="fa fa-times"></i>
                     </a>
                 </div>
             </div>
             <div class="ibox-content">
-                <p>
-                    This is basic example of Step
-                </p>
 
                 <div id="wizard">
                     <h3>Temporada</h3>
@@ -37,21 +25,23 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Titulo de la temporada</label>
-                                    <input type="text" name="nombre_temporada" value="Ejemplo" placeholder="Ejemplo: Bimensual Abril-Mayo" class="form-control required"  />
+                                    <input type="text" name="nombre_temporada" value="{{ (isset($oTemporada))?$oTemporada->nombre:'' }}" placeholder="Ejemplo: Bimensual Abril-Mayo" class="form-control required"  />
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Inicio - Fin de temporada</label>
-                                    <input type="text" name="daterange" value="" class="form-control required" />
+                                    <input type="text" name="daterange" value="{{ (isset($oTemporada))?$oTemporada->fecha_inicio . ' - ' . $oTemporada->fecha_termino :'' }}" class="form-control required" />
                                 </div>
                             </div>
+
+                            <input type="hidden" name="temporada_id" value="{{ (isset($oTemporada))?$oTemporada->id:'' }}"  />
                         </form>
                     </section>
 
                     <h3>Requisitos</h3>
                     <section>
-                        <p>Añadir información e los requisitos.</p>
+                        <p>Añadir requisitos.</p>
 
                         <table class="table table-bordered">
                             <thead>
@@ -63,12 +53,14 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($oTemporada->requisitos as $oRequisito)
                             <tr>
                                 <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>{{ $oRequisito->nombre }}</td>
+                                <td>{{ $oRequisito->valor }}</td>
+                                <td>{{ $oRequisito->categoria->nombre }}</td>
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <a data-toggle="modal" class="btn btn-primary" href="#modal-form"><i class="fa fa-plus"></i></a>
@@ -89,7 +81,7 @@
                         <div class="row">
                             <div class="col-sm-12 b-r"><h3 class="m-t-none m-b">Requisitos</h3>
 
-                                <p>Complete el fomulario para agregar un agregar/modificar un requisito.</p>
+                                <p>Complete el fomulario para agregar/modificar un requisito.</p>
 
                                 <form id="requisitos_form">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -97,7 +89,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Categoria</label>
-                                            <select name="requisito[0]['categoria']" class="form-control required">
+                                            <select name="requisito['categoria']" class="form-control required">
                                                 <option>Seleccionar una categoria</option>
                                                 @foreach( $oCategoriasList as $categoria )
                                                     <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
@@ -108,32 +100,33 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Nombre</label>
-                                            <input type="text" name="requisito[0]['nombre']" value="Ejemplo" placeholder="Ejemplo: Bimensual Abril-Mayo" class="form-control required"  />
+                                            <input type="text" name="requisito['nombre']" value="Ejemplo" placeholder="Ejemplo: Bimensual Abril-Mayo" class="form-control required"  />
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Descripción</label>
-                                            <textarea name="requisito[0]['descripcion']" class="form-control required"></textarea>
+                                            <textarea name="requisito['descripcion']" class="form-control required"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Valor (puntos)</label>
-                                            <input type="number" name="requisito[0]['valor']" value="30" placeholder="150" class="form-control required"  />
+                                            <input type="number" name="requisito['valor']" value="30" placeholder="150" class="form-control required"  />
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Fecha Inicio - Fin</label>
-                                            <input type="text" name="requisito[0]['daterange']" value="" class="form-control" />
+                                            <input type="text" name="requisito['daterange']" value="" class="form-control" />
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
+                                        <input type="hidden" name="requisito['temporada_id']" value=""  />
                                         <button class="btn btn-md btn-primary pull-right" type="submit"><strong>Guardar</strong></button>
                                     </div>
 
@@ -145,7 +138,7 @@
             </div>
         </div>
 
-        @endsection
+@endsection
 
 @section('extra-meta-head')
 <link href="/assets/css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
@@ -164,32 +157,47 @@
     <script src="{{ URL::asset('assets/js/utils.js') }}"></script>
     <script>
         saveTemporada = function(form){
-            var url = '/admin/evaluaciones/crear-temorada';
+            var url = '/admin/evaluaciones/guardar-temorada/';
             var data = {
                 nombre_temporada : form.find("input[name='nombre_temporada']").val(),
                 daterange : form.find("input[name='daterange']").val(),
+                //temporada_id : form.find('input[name="temporada_id"]').val(),
                 _token: form.find("input[name='_token']").val()
             };
-            $.post(url, data, function(response){
+            var id_temporada = form.find('input[name="temporada_id"]').val();
+            $.post(url + id_temporada, data, function(response){
+                response = $.parseJSON(response);
                 console.log(response);
+                var id_temporada = response.data.id;
+                form.find('input[name="temporada_id"]').val(id_temporada);
             });
         };
 
         saveRequisito = function(form){
-            var url = '/admin/evaluaciones/crear-temorada';
+            var url = '/admin/evaluaciones/guardar-requisito';
+            var requisito = {
+                                nombre: $('input[name="requisito[\'nombre\']"]').val(),
+                                descripcion : $('textarea[name="requisito[\'descripcion\']"]').val(),
+                                valor : $('input[name="requisito[\'valor\']"]').val(),
+                                categoria : $('select[name="requisito[\'categoria\']"]').val()
+                            };
             var data = {
-                categoria   : form.find("select[name='categoria']").val(),
-                nombre      : form.find("input[name='nombre']").val(),
-                temporada   : form.find("input[name='temporada_id']").val(),
-                daterange   : form.find("input[name='daterange']").val(),
+                categoria   : form.find('select[name="requisito[\'categoria\']"]').val(),
+                nombre      : form.find('input[name="requisito[\'nombre\']"]').val(),
+                descripcion : form.find('textarea[name="requisito[\'descripcion\']"]').val(),
+                temporada   : form.find('input[name="requisito[\'temporada_id\']"]').val(),
+                valor       : form.find('input[name="requisito[\'valor\']"]').val(),
+                //daterange   : form.find("input[name='daterange']").val(),
 
                 _token: form.find("input[name='_token']").val()
             };
             $.post(url, data, function(response){
-                console.log(response);
+                response = $.parseJSON(response);
+                if(response.error == false){
+                    $("#modal-form").click();
+                }
             });
         };
-
 
         $(document).ready(function() {
             $("#wizard").steps({
@@ -199,7 +207,7 @@
                 autoFocus: true,
                 onStepChanging: function (event, currentIndex, newIndex)
                 {
-                    var continuar = true;
+                    var continuar = false;
 
                     if(currentIndex == 0){
                         formTemp.validate().settings.ignore = ":disabled,:hidden";
@@ -209,7 +217,7 @@
                         }
                     }
                     return (continuar || newIndex < currentIndex);
-                },
+                }
             });
             $('input[name="daterange"]').daterangepicker({
                 locale: {
@@ -248,6 +256,14 @@
 
             var formTemp = $("#temporada_form");
             formTemp.validate()
+
+
+            $("#requisitos_form").submit(function(e){
+                e.preventDefault();
+                var id_temporada = $("input[name='temporada_id']").val();
+                $('input[name="requisito[\'temporada_id\']"]').val(id_temporada);
+                saveRequisito($(this));
+            });
 
         });
     </script>

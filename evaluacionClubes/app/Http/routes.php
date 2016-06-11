@@ -21,7 +21,12 @@ Route::get('/admin', 'Admin\DashboardController@index');
  */
 Route::get('/admin/evaluaciones', 'Admin\EvaluacionController@listar');
 Route::get('/admin/evaluaciones/nueva', 'Admin\EvaluacionController@nueva');
-Route::post('/admin/evaluaciones/crear-temorada', 'Admin\EvaluacionController@saveTemporada');
+Route::get('/admin/evaluaciones/editar/{id}', 'Admin\EvaluacionController@editar');
+Route::post('/admin/evaluaciones/guardar-temorada', 'Admin\EvaluacionController@saveTemporada');
+Route::post('/admin/evaluaciones/guardar-temorada/{id}', 'Admin\EvaluacionController@saveTemporada');
+
+Route::post('/admin/evaluaciones/guardar-requisito', 'Admin\EvaluacionController@saveRequisito');
+Route::post('/admin/evaluaciones/guardar-requisito/{id}', 'Admin\EvaluacionController@saveRequisito');
 
 /**
  * Clubes routes
