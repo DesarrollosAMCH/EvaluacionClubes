@@ -55,6 +55,7 @@
                             </thead>
                             <tbody>
                             <?php $i = 1;?>
+                            @if( isset($oTemporada) )
                             @foreach($oTemporada->requisitos as $oRequisito)
                             <tr id="requisito-{{ $oRequisito->id }}">
                                 <td>{{ $i++ }}</td>
@@ -77,6 +78,7 @@
                                 </td>
                             </tr>
                             @endforeach
+                            @endif
                             </tbody>
                         </table>
                         <a data-toggle="modal" class="btn btn-primary" href="#modal-form"><i class="fa fa-plus"></i></a>
@@ -212,7 +214,7 @@
         addRow = function(requisito){
             var $table = $("#requisitos-list");
             var count = $table.find('tr').length;
-            
+
             var row = '<tr>';
             row += '<td>';
             row += count + 1;
