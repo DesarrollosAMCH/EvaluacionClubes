@@ -43,22 +43,38 @@
                     <section>
                         <p>Añadir requisitos.</p>
 
-                        <table class="table table-bordered">
+                        <table id="requisitos-list" class="table table-bordered">
                             <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Nombre</th>
                                 <th>Valor</th>
                                 <th>Categoria</th>
+                                <th>Acciones</th>
                             </tr>
                             </thead>
                             <tbody>
+                            <?php $i = 1;?>
                             @foreach($oTemporada->requisitos as $oRequisito)
-                            <tr>
-                                <td>1</td>
+                            <tr id="requisito-{{ $oRequisito->id }}">
+                                <td>{{ $i++ }}</td>
                                 <td>{{ $oRequisito->nombre }}</td>
                                 <td>{{ $oRequisito->valor }}</td>
                                 <td>{{ $oRequisito->categoria->nombre }}</td>
+                                <td>
+                                    <a href="#modal-form" data-requisito="{{ $oRequisito->id }}" data-toggle="modal"
+                                        data-nombre="{{ $oRequisito->nombre }}"
+                                        data-descripcion="{{ $oRequisito->descripcion }}"
+                                        data-valor="{{ $oRequisito->valor }}"
+                                        data-categoria="{{ $oRequisito->categoria->id }}"
+                                        data-temporada="{{ $oRequisito->idTemporada }}"
+                                        data-inicio="{{ $oRequisito->fecha_inicio }}"
+                                        data-termino="{{ $oRequisito->fecha_termino }}"
+                                    >
+                                        <i class="fa fa-edit"></i>
+                                        Editar
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
                             </tbody>
@@ -100,7 +116,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Nombre</label>
-                                            <input type="text" name="requisito['nombre']" value="Ejemplo" placeholder="Ejemplo: Bimensual Abril-Mayo" class="form-control required"  />
+                                            <input type="text" name="requisito['nombre']" value="" placeholder="Ejemplo: Bimensual Abril-Mayo" class="form-control required"  />
                                         </div>
                                     </div>
 
@@ -114,7 +130,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Valor (puntos)</label>
-                                            <input type="number" name="requisito['valor']" value="30" placeholder="150" class="form-control required"  />
+                                            <input type="number" name="requisito['valor']" value="" placeholder="150" class="form-control required"  />
                                         </div>
                                     </div>
 
@@ -175,12 +191,6 @@
 
         saveRequisito = function(form){
             var url = '/admin/evaluaciones/guardar-requisito';
-            var requisito = {
-                                nombre: $('input[name="requisito[\'nombre\']"]').val(),
-                                descripcion : $('textarea[name="requisito[\'descripcion\']"]').val(),
-                                valor : $('input[name="requisito[\'valor\']"]').val(),
-                                categoria : $('select[name="requisito[\'categoria\']"]').val()
-                            };
             var data = {
                 categoria   : form.find('select[name="requisito[\'categoria\']"]').val(),
                 nombre      : form.find('input[name="requisito[\'nombre\']"]').val(),
@@ -188,15 +198,51 @@
                 temporada   : form.find('input[name="requisito[\'temporada_id\']"]').val(),
                 valor       : form.find('input[name="requisito[\'valor\']"]').val(),
                 //daterange   : form.find("input[name='daterange']").val(),
-
                 _token: form.find("input[name='_token']").val()
             };
             $.post(url, data, function(response){
                 response = $.parseJSON(response);
                 if(response.error == false){
                     $("#modal-form").click();
+                    addRow(data);
                 }
             });
+        };
+
+        addRow = function(requisito){
+            var $table = $("#requisitos-list");
+            var count = $table.find('tr').length;
+            
+            var row = '<tr>';
+            row += '<td>';
+            row += count + 1;
+            row += '</td>';
+            row += '<td>';
+            row += requisito.nombre;
+            row += '</td>';
+            row += '<td>';
+            row += requisito.valor;
+            row += '</td>';
+            row += '<td>';
+            row += requisito.categoria;
+            row += '</td>';
+            row += '<td>';
+            row += '<a href="#modal-form" data-requisito="'+requisito.id+'" data-toggle="modal" data-nombre="'+requisito.nombre+'" data-descripcion="'+requisito.descripcion+'" data-valor="'+requisito.valor+'" data-categoria="'+requisito.categoria+'" data-temporada="'+requisito.temporada+'" data-inicio="" data-termino=""> <i class="fa fa-edit"></i> Editar </a>';
+            row += '</td>';
+            row += '</tr>';
+
+            $table.append(row);
+        };
+
+        fillModalForm = function(requisito){
+            var form = $("#requisitos_form");
+
+            form.find('select[name="requisito[\'categoria\']"]').val(requisito.categoria);
+            form.find('input[name="requisito[\'nombre\']"]').val(requisito.nombre);
+            form.find('textarea[name="requisito[\'descripcion\']"]').val(requisito.descripcion);
+            form.find('input[name="requisito[\'temporada_id\']"]').val(requisito.temporada);
+            form.find('input[name="requisito[\'valor\']"]').val(requisito.valor);
+            form.find("input[name='daterange']").val(requisito.inicio + ' - ' + requisito.termino);
         };
 
         $(document).ready(function() {
@@ -257,13 +303,26 @@
             var formTemp = $("#temporada_form");
             formTemp.validate()
 
-
             $("#requisitos_form").submit(function(e){
                 e.preventDefault();
                 var id_temporada = $("input[name='temporada_id']").val();
                 $('input[name="requisito[\'temporada_id\']"]').val(id_temporada);
                 saveRequisito($(this));
             });
+
+            $("a[data-toggle='modal']").click(function(){
+                var $elemento = $(this);
+                var requisito = {
+                                    nombre : $elemento.data('nombre'),
+                                    descripcion : $elemento.data('descripcion'),
+                                    valor : $elemento.data('valor'),
+                                    categoria : $elemento.data('categoria'),
+                                    temporada : $elemento.data('temporada'),
+                                    inicio : $elemento.data('inicio'),
+                                    termino : $elemento.data('termino')
+                                };
+                fillModalForm(requisito);
+            })
 
         });
     </script>
