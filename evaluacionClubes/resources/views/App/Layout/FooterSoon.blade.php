@@ -9,12 +9,4 @@
     </div>
 </section>
 
-<div style="
-    width: 100%;
-    height: 100% !important;
-    background-color: #000;
-    position: absolute;
-    opacity: 0.4;
-    z-index: 1;
-    top: 0;
-    "></div>
+<div class="own-opacity"></div>
