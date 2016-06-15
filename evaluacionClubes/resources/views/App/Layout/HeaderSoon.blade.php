@@ -35,6 +35,9 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="/login" target="_blank">Evaluación</a>
+                </li>
             </ul>
         </div>
     </nav>
