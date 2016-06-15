@@ -4,7 +4,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="format-detection" content="telephone=no"/>
 <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-<title>Home</title>
+<title>AMCH | Conquistadores</title>
 
 <!-- Bootstrap -->
 <link href="/assets/app/css/bootstrap.css" rel="stylesheet">
