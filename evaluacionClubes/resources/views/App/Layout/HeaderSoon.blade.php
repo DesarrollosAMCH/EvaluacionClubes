@@ -2,15 +2,38 @@
     <nav class="navbar navbar-default navbar-static-top ">
         <div class="container">
             <div class="navbar-header">
-                <h1 class="navbar-brand">
+                <h1 class="navbar-brand" style="width: 90%">
                     <!--<a data-type='rd-navbar-brand' href="./">Constr<span>ex</span></a>-->
-                    <img src="/assets/app/images/conquis/logo_amch.png" />
+                    <img class="responsive" width="100%" src="/assets/app/images/conquis/logo_amch.png" />
                 </h1>
             </div>
 
             <ul class="navbar-nav sf-menu navbar-right" data-type="navbar">
-                <li class="dropdown">
+                <li>
                     <a href="./">Pronto</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">Nuestro Campo</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">Equipo</a>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);">Zonas</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="javascript:void(0);">Centro</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Oriente</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Poniente</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Norte</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
