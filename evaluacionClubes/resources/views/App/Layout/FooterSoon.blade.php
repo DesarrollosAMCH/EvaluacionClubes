@@ -4,14 +4,14 @@
             <!--<h1>Conquis<span>AMCH</span></h1> &#169; <span id="copyright-year"></span>&nbsp;-->
 
             <img src="/assets/app/images/conquis/logo_amch.png" />
-            <a href="index-5.html">Privacy Policy</a>
+            <a href="https://www.facebook.com/RegionalAMCH"><i class="fa fa-facebook-square"></i>&nbsp; Visitanos en Facebook</a>
         </div>
     </div>
 </section>
 
 <div style="
     width: 100%;
-    height: 1050px;
+    height: 100% !important;
     background-color: #000;
     position: absolute;
     opacity: 0.4;
