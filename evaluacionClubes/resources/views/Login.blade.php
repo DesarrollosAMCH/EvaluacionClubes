@@ -8,11 +8,11 @@
 
     <title>INSPINIA | Login</title>
 
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/assets/_admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/_admin/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <link href="/assets/css/animate.css" rel="stylesheet">
-    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/_admin/css/animate.css" rel="stylesheet">
+    <link href="/assets/_admin/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -39,17 +39,17 @@
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
-                <a href="/assets/#"><small>Forgot password?</small></a>
+                <a href=""><small>Forgot password?</small></a>
                 <p class="text-muted text-center"><small>Do not have an account?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="/assets/register.html">Create an account</a>
+                <a class="btn btn-sm btn-white btn-block" href="/assets/_admin/register.html">Create an account</a>
             </form>
             <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
         </div>
     </div>
 
     <!-- Mainly scripts -->
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/assets/_admin/js/jquery-2.1.1.js"></script>
+    <script src="/assets/_admin/js/bootstrap.min.js"></script>
 
 </body>
 

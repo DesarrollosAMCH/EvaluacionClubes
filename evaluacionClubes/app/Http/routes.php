@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'LoginController@login');
+Route::get('/', 'HomeController@home');
+Route::get('/login', 'LoginController@login');
 Route::get('/admin', 'Admin\DashboardController@index');
 
 
