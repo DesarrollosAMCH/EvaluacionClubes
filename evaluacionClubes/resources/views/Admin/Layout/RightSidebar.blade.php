@@ -28,7 +28,7 @@
                 <div class="sidebar-message">
                     <a href="#">
                         <div class="pull-left text-center">
-                            <img alt="image" class="img-circle message-avatar" src="/assets/img/a1.jpg">
+                            <img alt="image" class="img-circle message-avatar" src="/assets/_admin/img/a1.jpg">
 
                             <div class="m-t-xs">
                                 <i class="fa fa-star text-warning"></i>
@@ -46,7 +46,7 @@
                 <div class="sidebar-message">
                     <a href="#">
                         <div class="pull-left text-center">
-                            <img alt="image" class="img-circle message-avatar" src="/assets/img/a2.jpg">
+                            <img alt="image" class="img-circle message-avatar" src="/assets/_admin/img/a2.jpg">
                         </div>
                         <div class="media-body">
                             The point of using Lorem Ipsum is that it has a more-or-less normal.
@@ -58,7 +58,7 @@
                 <div class="sidebar-message">
                     <a href="#">
                         <div class="pull-left text-center">
-                            <img alt="image" class="img-circle message-avatar" src="/assets/img/a3.jpg">
+                            <img alt="image" class="img-circle message-avatar" src="/assets/_admin/img/a3.jpg">
 
                             <div class="m-t-xs">
                                 <i class="fa fa-star text-warning"></i>
@@ -76,7 +76,7 @@
                 <div class="sidebar-message">
                     <a href="#">
                         <div class="pull-left text-center">
-                            <img alt="image" class="img-circle message-avatar" src="/assets/img/a4.jpg">
+                            <img alt="image" class="img-circle message-avatar" src="/assets/_admin/img/a4.jpg">
                         </div>
 
                         <div class="media-body">
@@ -89,7 +89,7 @@
                 <div class="sidebar-message">
                     <a href="#">
                         <div class="pull-left text-center">
-                            <img alt="image" class="img-circle message-avatar" src="/assets/img/a8.jpg">
+                            <img alt="image" class="img-circle message-avatar" src="/assets/_admin/img/a8.jpg">
                         </div>
                         <div class="media-body">
 
@@ -102,7 +102,7 @@
                 <div class="sidebar-message">
                     <a href="#">
                         <div class="pull-left text-center">
-                            <img alt="image" class="img-circle message-avatar" src="/assets/img/a7.jpg">
+                            <img alt="image" class="img-circle message-avatar" src="/assets/_admin/img/a7.jpg">
                         </div>
                         <div class="media-body">
                             Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
@@ -114,7 +114,7 @@
                 <div class="sidebar-message">
                     <a href="#">
                         <div class="pull-left text-center">
-                            <img alt="image" class="img-circle message-avatar" src="/assets/img/a3.jpg">
+                            <img alt="image" class="img-circle message-avatar" src="/assets/_admin/img/a3.jpg">
 
                             <div class="m-t-xs">
                                 <i class="fa fa-star text-warning"></i>
@@ -132,7 +132,7 @@
                 <div class="sidebar-message">
                     <a href="#">
                         <div class="pull-left text-center">
-                            <img alt="image" class="img-circle message-avatar" src="/assets/img/a4.jpg">
+                            <img alt="image" class="img-circle message-avatar" src="/assets/_admin/img/a4.jpg">
                         </div>
                         <div class="media-body">
                             Uncover many web sites still in their infancy. Various versions have.
