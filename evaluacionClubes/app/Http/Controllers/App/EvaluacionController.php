@@ -19,4 +19,9 @@ class EvaluacionController extends Controller
         $this->__vars['oEvaluacion'] = TemporadaModel::findTreeToArray($id);
         return view('App/ListarRequisitos', $this->__vars);
     }
+
+    public function requisito($id){
+        $this->__vars['oRequisito'] = RequisitoModel::find($id);
+        return view('App/CompletarRequisito', $this->__vars);
+    }
 }

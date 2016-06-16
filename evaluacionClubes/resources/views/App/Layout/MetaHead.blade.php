@@ -1,16 +1,17 @@
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="format-detection" content="telephone=no"/>
   <link rel="icon" href="/assets/app/images/favicon.ico" type="image/x-icon">
-  <title>Projects</title>
+  <title>Evaluaciones AMCH</title>
 
   <!-- Bootstrap -->
   <link href="/assets/app/css/bootstrap.css" rel="stylesheet">
 
   <!-- Links -->
   <link rel="stylesheet" href="/assets/app/css/search.css">
+  <link rel="stylesheet" href="/assets/app/css/rd-mailform-2.css"/>
   <link rel="stylesheet" href="/assets/app/css/jquery.fancybox.css">
 
   <!--JS-->

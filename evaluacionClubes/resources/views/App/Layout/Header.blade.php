@@ -10,7 +10,7 @@
 
           <ul class="navbar-nav sf-menu navbar-right" data-type="navbar">
             <li class="active">
-              <a href="./" >Evaluaciones</a>
+              <a href="/app" >Evaluaciones</a>
             </li>
             <li>
               <a href="/">Salir</a>

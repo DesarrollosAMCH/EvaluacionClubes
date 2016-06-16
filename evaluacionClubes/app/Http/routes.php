@@ -33,7 +33,7 @@ Route::post('/admin/evaluaciones/guardar-requisito/{id}', 'Admin\EvaluacionContr
 
 Route::get('/app', 'App\EvaluacionController@listar');
 Route::get('/app/requisitos/{id_evaluacion}', 'App\EvaluacionController@requisitos');
-
+Route::get('/app/requisito/{id_requisito}', 'App\EvaluacionController@requisito');
 
 /**
  * Clubes routes
