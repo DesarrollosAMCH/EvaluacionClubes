@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @include('App.Layout.MetaHead')
+    @include('Website.Layout.MetaHead')
 </head>
 <body>
-<div class="page page-1">
+<div class="page">
     <!--========================================================
                               HEADER
     =========================================================-->
-    <header class="head-3">
-        @include('App.Layout.HeaderSoon')
+    <header>
+        @include('Website.Layout.Header')
     </header>
+
+    <!--========================================================
+                              CONTENT
+    =========================================================-->
+
+
+    <main>
+        @yield('content')
+    </main>
 
     <!--========================================================
                             FOOTER
   =========================================================-->
-    <footer class="foot">
-        @include('App.Layout.FooterSoon')
+    <footer>
+        @include('Website.Layout.Footer')
     </footer>
 </div>
 
-@include('App.Layout.MetaFoot')
-<style>
-    @media  (max-width: 480px){
-        .own-opacity, .page-1 .swiper-container {
-            height: 1050px !important;
-        }
-    }
-</style>
+
+@include('Website.Layout.MetaFoot')
+
+
 </body>
 </html>

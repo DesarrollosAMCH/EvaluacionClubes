@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function home(Request $request){
-        return view('App/ComingSoon');
+        return view('Website/ComingSoon');
         //return view('App/Home');
     }
 }

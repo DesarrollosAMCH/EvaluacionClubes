@@ -1,4 +1,4 @@
-@extends('App.Layout.Main')
+@extends('Website.Layout.Main')
 
 @section('content')
   <section class="well well1">

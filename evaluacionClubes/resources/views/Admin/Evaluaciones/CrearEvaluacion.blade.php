@@ -61,13 +61,13 @@
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $oRequisito->nombre }}</td>
                                 <td>{{ $oRequisito->valor }}</td>
-                                <td>{{ $oRequisito->categoria->nombre }}</td>
+                                <td>{{ (is_object($oRequisito->categoria))?$oRequisito->categoria->nombre:'' }}</td>
                                 <td>
                                     <a href="#modal-form" data-requisito="{{ $oRequisito->id }}" data-toggle="modal"
                                         data-nombre="{{ $oRequisito->nombre }}"
                                         data-descripcion="{{ $oRequisito->descripcion }}"
                                         data-valor="{{ $oRequisito->valor }}"
-                                        data-categoria="{{ $oRequisito->categoria->id }}"
+                                        data-categoria="{{ (is_object($oRequisito->categoria))?$oRequisito->categoria->id:0 }}"
                                         data-temporada="{{ $oRequisito->idTemporada }}"
                                         data-inicio="{{ $oRequisito->fecha_inicio }}"
                                         data-termino="{{ $oRequisito->fecha_termino }}"
@@ -85,7 +85,7 @@
                     </section>
                     <h3>Paso 3</h3>
                     <section>
-                        <p>The next and previous buttons help you to navigate through your content.</p>
+                        <p>¿Has terminado de añadir requisitos a esta evaluación? ... si es así has click en finalizar..</p>
                     </section>
                 </div>
             </div>
@@ -145,6 +145,7 @@
 
                                     <div class="col-lg-12">
                                         <input type="hidden" name="requisito['temporada_id']" value=""  />
+                                        <input type="hidden" name="requisito['id']" value=""  />
                                         <button class="btn btn-md btn-primary pull-right" type="submit"><strong>Guardar</strong></button>
                                     </div>
 
@@ -192,7 +193,8 @@
         };
 
         saveRequisito = function(form){
-            var url = '/admin/evaluaciones/guardar-requisito';
+            var id = form.find('input[name="requisito[\'id\']"]').val();
+            var url = '/admin/evaluaciones/guardar-requisito/' + id;
             var data = {
                 categoria   : form.find('select[name="requisito[\'categoria\']"]').val(),
                 nombre      : form.find('input[name="requisito[\'nombre\']"]').val(),
@@ -206,16 +208,21 @@
                 response = $.parseJSON(response);
                 if(response.error == false){
                     $("#modal-form").click();
-                    addRow(data);
+                    addRow(data, response.data.id);
                 }
             });
         };
 
-        addRow = function(requisito){
+        addRow = function(requisito, id){
             var $table = $("#requisitos-list");
             var count = $table.find('tr').length;
 
-            var row = '<tr>';
+            if($('tr#requisito-'+id).length){
+                $('tr#requisito-'+id).remove();
+                count -= 1;
+            }
+
+            var row = '<tr id="requisito-'+ id +'">';
             row += '<td>';
             row += count + 1;
             row += '</td>';
@@ -243,6 +250,7 @@
             form.find('input[name="requisito[\'nombre\']"]').val(requisito.nombre);
             form.find('textarea[name="requisito[\'descripcion\']"]').val(requisito.descripcion);
             form.find('input[name="requisito[\'temporada_id\']"]').val(requisito.temporada);
+            form.find('input[name="requisito[\'id\']"]').val(requisito.id);
             form.find('input[name="requisito[\'valor\']"]').val(requisito.valor);
             form.find("input[name='daterange']").val(requisito.inicio + ' - ' + requisito.termino);
         };
@@ -264,9 +272,17 @@
                             continuar = true;
                         }
                     }
+                    if(currentIndex == 1){
+                        continuar = true;
+                    }
                     return (continuar || newIndex < currentIndex);
+                },
+                onFinished: function(){
+                    window.location = '/admin/evaluaciones';
                 }
             });
+
+
             $('input[name="daterange"]').daterangepicker({
                 locale: {
                     "format": 'YYYY/DD/MM',
@@ -315,6 +331,7 @@
             $("a[data-toggle='modal']").click(function(){
                 var $elemento = $(this);
                 var requisito = {
+                                    id : $elemento.data('requisito'),
                                     nombre : $elemento.data('nombre'),
                                     descripcion : $elemento.data('descripcion'),
                                     valor : $elemento.data('valor'),

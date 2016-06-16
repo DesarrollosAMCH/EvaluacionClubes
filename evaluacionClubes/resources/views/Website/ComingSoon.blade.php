@@ -1,0 +1,1 @@
+@extends('Website.Layout.MainSoon')

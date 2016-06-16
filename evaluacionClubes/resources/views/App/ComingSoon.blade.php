@@ -1,1 +1,0 @@
-@extends('App.Layout.MainSoon')
