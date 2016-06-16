@@ -2,7 +2,7 @@
 
 @section('content')
     @foreach($oEvaluacionesList as $oEvaluacion)
-        <section class="well well4 parallax text-center" data-url="/assets/app/images/parallax4-1.jpg" data-mobile="true"
+        <section class="well well4 parallax text-center" data-url="{{ $oEvaluacion->portada }}" data-mobile="true"
              data-speed="0.6">
       <div class="container">
         <h2>

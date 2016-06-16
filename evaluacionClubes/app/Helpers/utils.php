@@ -19,3 +19,19 @@ function getErrorMessages($code){
     ];
     return (isset($error_messages[$code]))?$error_messages[$code]:'';
 }
+
+function formatear_nombre_archivos($texto){
+    $fullname = explode('.',$texto);
+    $name = $fullname[0];
+    $search     =   ['_'];
+    $replace    =   [' '];
+    $texto  =   str_replace($search, $replace, $name);
+    return ucwords($texto);
+}
+
+function formatear_guion_bajo($texto){
+    $search     =   [' '];
+    $replace    =   ['_'];
+    $texto  =   str_replace($search, $replace, $texto);
+    return ucwords($texto);
+}

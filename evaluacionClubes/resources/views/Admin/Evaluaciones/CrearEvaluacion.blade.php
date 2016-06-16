@@ -85,7 +85,30 @@
                     </section>
                     <h3>Paso 3</h3>
                     <section>
-                        <p>¿Has terminado de añadir requisitos a esta evaluación? ... si es así has click en finalizar..</p>
+
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="form-group" id="">
+                                <?php $portada = ( isset($oTemporada) ) && ( strlen($oTemporada->portada) > 0 )?$oTemporada->portada:Input::old('portada'); ?>
+                                @if( strlen($portada) > 0)
+                                    <?php $img_style = ""?>
+                                    <?php $form_style = "display:none"?>
+                                @else
+                                    <?php $img_style = "display:none"?>
+                                    <?php $form_style = ""?>
+                                @endif
+                                <div class="exists-img" style="text-align: center;{{ $img_style }}">
+                                    <img width="60%" data-baseurl="/" src="@if( isset($oTemporada) ){{ url($oTemporada->portada) }} @else {{ url(Input::old('portada')) }} @endif"    />
+                                    <a style="display: block; margin-top: 10px;" class="btn btn-danger" id="chg-img">Cambiar portada</a>
+                                </div>
+
+                                <form action="/admin/tarjetas/upload" class="form-horizontal dropzone do-not-exists-img" id="my-dropzone" enctype="multipart/form-data" style="{{ $form_style }}">
+                                    <div class="fallback">
+                                        <input name="cover" type="file" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </div>
@@ -173,7 +196,8 @@
 @endsection
 
 @section('extra-js')
-    <script src="{{ URL::asset('assets/js/utils.js') }}"></script>
+    <script src="http://www.dropzonejs.com/new-js/dropzone.js"></script>
+    <script src="{{ URL::asset('assets/_admin/js/utils.js') }}"></script>
     <script>
         saveTemporada = function(form){
             var url = '/admin/evaluaciones/guardar-temorada/';
@@ -255,7 +279,23 @@
             form.find("input[name='daterange']").val(requisito.inicio + ' - ' + requisito.termino);
         };
 
+        showImg = function(){
+            $(".do-not-exists-img").fadeOut(600, function(){
+                $(".exists-img").fadeIn("slow");
+            });
+        };
+        showForm = function(){
+            $(".exists-img").fadeOut(600, function(){
+                $(".do-not-exists-img").fadeIn("slow");
+            });
+        };
+
         $(document).ready(function() {
+            $("#chg-img").click(function(){
+                alert("ddd");
+                //showForm();
+            });
+
             $("#wizard").steps({
                 headerTag: "h3",
                 bodyTag: "section",
@@ -342,6 +382,27 @@
                                 };
                 fillModalForm(requisito);
             })
+
+            var id_temporada = $("input[name='temporada_id']").val();
+            Dropzone.autoDiscover = false;
+            var myDropzone = $("#my-dropzone").dropzone({
+                url                 :   '/admin/evaluaciones/upload/'+id_temporada,
+                paramName           :   'cover',
+                maxFilesize         :   '5',
+                maxFiles            :   '1',
+                dictDefaultMessage  :   'Arrastre o haga click para subir una imagen (jpg - 2050x936 px)',
+                acceptedFiles       :   '.jpg, jpeg',
+                success             :   function(arg, data){
+                    if(!data.error){
+                        $("input[name='cover']").val(data.path);
+                        this.removeAllFiles();
+                        console.log(data.path);
+                        setTimeout(function(){
+                            location.reload();
+                        },1000);
+                    }
+                }
+            });
 
         });
     </script>

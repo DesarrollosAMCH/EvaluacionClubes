@@ -28,6 +28,7 @@ Route::post('/admin/evaluaciones/guardar-temorada/{id}', 'Admin\EvaluacionContro
 
 Route::post('/admin/evaluaciones/guardar-requisito', 'Admin\EvaluacionController@saveRequisito');
 Route::post('/admin/evaluaciones/guardar-requisito/{id}', 'Admin\EvaluacionController@saveRequisito');
+Route::post('/admin/evaluaciones/upload/{id}', 'Admin\EvaluacionController@upload');
 
 
 

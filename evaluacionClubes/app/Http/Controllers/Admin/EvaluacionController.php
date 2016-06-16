@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Storage;
+use Input;
+use File;
+
 use App\CategoriaRequisitoModel;
 use App\RequisitoModel;
 use App\TemporadaModel;
@@ -74,5 +78,38 @@ class EvaluacionController extends AdminController
         }else{
 
         }
+    }
+
+    public function upload(Request $request, $temporada_id){
+        $oTemporada    =   TemporadaModel::find($temporada_id);
+
+        $filename = formatear_guion_bajo( urldecode( $request->file('cover')->getClientOriginalName() ) );
+        $path = 'uploads/temporadas/' . $oTemporada->id . '_' .formatear_guion_bajo($oTemporada->nombre);
+        $path_to_file = $path . '/' . $filename;
+
+        $save = Storage::put($path,
+            file_get_contents($request->file('cover')->getRealPath())
+        );
+
+        $file = Input::file('cover');
+        $save = $file->move($path, $filename);
+
+        if ($save) {
+            $oTemporada->portada     =   $path_to_file;
+            $oTemporada->save();
+
+            $resp = array(
+                'error' => false,
+                'meg'   => 'Todo Ok',
+                'path'  => $path . '/' . $filename
+            );
+        } else {
+            $resp = array(
+                'error' => true,
+                'meg'   => 'Ha ocurrido un error',
+                'path'  => null
+            );
+        }
+        return $resp;
     }
 }

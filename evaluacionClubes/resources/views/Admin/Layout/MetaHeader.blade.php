@@ -9,7 +9,7 @@
 
 @yield('extra-meta-head')
 
-
+<link href="http://www.dropzonejs.com/css/dropzone.css" rel="stylesheet">
 <link href="/assets/_admin/css/plugins/iCheck/custom.css" rel="stylesheet">
 <link href="/assets/_admin/css/animate.css" rel="stylesheet">
 <link href="/assets/_admin/css/style.css" rel="stylesheet">
