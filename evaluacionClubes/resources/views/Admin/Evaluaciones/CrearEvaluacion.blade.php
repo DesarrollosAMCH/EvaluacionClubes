@@ -159,16 +159,16 @@
 @endsection
 
 @section('extra-meta-head')
-<link href="/assets/css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
+<link href="/assets/_admin/css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
 @endsection
 
 @section('extra-meta-footer')
 <!-- Date range use moment.js same as full calendar plugin -->
-<script src="/assets/js/plugins/fullcalendar/moment.min.js"></script>
+<script src="/assets/_admin/js/plugins/fullcalendar/moment.min.js"></script>
 <!-- Date range picker -->
-<script src="/assets/js/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="/assets/_admin/js/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Steps -->
-<script src="/assets/js/plugins/staps/jquery.steps.min.js"></script>
+<script src="/assets/_admin/js/plugins/staps/jquery.steps.min.js"></script>
 @endsection
 
 @section('extra-js')
