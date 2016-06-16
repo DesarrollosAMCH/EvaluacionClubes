@@ -29,6 +29,12 @@ Route::post('/admin/evaluaciones/guardar-temorada/{id}', 'Admin\EvaluacionContro
 Route::post('/admin/evaluaciones/guardar-requisito', 'Admin\EvaluacionController@saveRequisito');
 Route::post('/admin/evaluaciones/guardar-requisito/{id}', 'Admin\EvaluacionController@saveRequisito');
 
+
+
+Route::get('/app', 'App\EvaluacionController@listar');
+Route::get('/app/requisitos/{id_evaluacion}', 'App\EvaluacionController@requisitos');
+
+
 /**
  * Clubes routes
  */
