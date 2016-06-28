@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => 'mail',//env('MAIL_DRIVER', 'smtp'),
+    'driver' => 'mailgun',//env('MAIL_DRIVER', 'mailgun'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => 'mailtrap.io',//env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => 'smtp.mailgun.org',//env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => '2525',//env('MAIL_PORT', 587),
+    'port' => 587,//env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
