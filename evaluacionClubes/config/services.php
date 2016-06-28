@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => 'evaluacionesamch.nicolasfredes.cl',//env('MAILGUN_DOMAIN'),
+        'secret' => 'key-b04568c11cf8a8e79e8f7ff467996971',//env('MAILGUN_SECRET'),
     ],
 
     'ses' => [
