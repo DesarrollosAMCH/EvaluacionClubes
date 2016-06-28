@@ -63,7 +63,7 @@ class LoginController extends Controller
                     ->to($data['email'], $data['club'])
                     ->subject("Activación de Cuenta AMCH - ". $data['club']);
             });
-            return redirect('/')->with(['alert'=>true,'type'=>'success', 'msg'=>'Se ha enviado un E-Mail al director del club '.$data['club'].' para que active el acceso.'])
+            return redirect('/register')->with(['alert'=>true,'type'=>'success', 'msg'=>'Se ha enviado un E-Mail al director del club '.$data['club'].' para que active el acceso.'])
                 ->with("msg",'info')
                 ;
         }else{
