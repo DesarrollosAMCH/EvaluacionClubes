@@ -69,4 +69,17 @@ class LoginController extends Controller
         }
 
     }
+
+    public function mailing(){
+        $vars = [
+            'id_club' => 1,
+            'club' => 'Regional AMCH',
+            'username' => 'regional',
+            'password' => 'regional*',
+            'email'   => 'niko.afv@gmail.com',
+            'token' => '11sd2f15sf4s48sd4fg8sd4f8sdfs5df45sd4f5sd4f5sd4f54',
+            'domain' => App::make('url')->to('/')
+        ];
+        return view('App.Emails.RegisterTmpl', $vars);
+    }
 }
