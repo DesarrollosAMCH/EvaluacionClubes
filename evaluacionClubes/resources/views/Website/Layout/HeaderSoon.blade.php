@@ -36,7 +36,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/login" target="_blank">Evaluación</a>
+                    <a href="/app" target="_blank">Evaluación</a>
                 </li>
             </ul>
         </div>

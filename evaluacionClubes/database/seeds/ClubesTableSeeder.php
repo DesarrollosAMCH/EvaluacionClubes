@@ -15,6 +15,15 @@ class ClubesTableSeeder extends Seeder
 
         DB::table('clubes')->insert([
             'id'        =>  1,
+            'nombre'    =>  'Regional AMCH',
+            'logo'      =>  '',
+            'foto'      =>  '',
+            'idZona'    =>  '',
+            'idCampo'   =>  '1'
+        ]);
+
+        DB::table('clubes')->insert([
+            'id'        =>  2,
             'nombre'    =>  'Rejas Sur',
             'logo'      =>  '',
             'foto'      =>  '',
@@ -23,7 +32,7 @@ class ClubesTableSeeder extends Seeder
         ]);
 
         DB::table('clubes')->insert([
-            'id'        =>  2,
+            'id'        =>  3,
             'nombre'    =>  'Ararat',
             'logo'      =>  '',
             'foto'      =>  '',
@@ -32,7 +41,7 @@ class ClubesTableSeeder extends Seeder
         ]);
 
         DB::table('clubes')->insert([
-            'id'        =>  3,
+            'id'        =>  4,
             'nombre'    =>  'K2',
             'logo'      =>  '',
             'foto'      =>  '',

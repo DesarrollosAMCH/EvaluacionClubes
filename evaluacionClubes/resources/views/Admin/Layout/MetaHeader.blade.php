@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>INSPINIA | Dashboard v.3</title>
+<title>Administrador AMCH | Conquistadores</title>
 
 <link href="/assets/_admin/css/plugins/steps/jquery.steps.css" rel="stylesheet">
 <link href="/assets/_admin/css/bootstrap.min.css" rel="stylesheet">

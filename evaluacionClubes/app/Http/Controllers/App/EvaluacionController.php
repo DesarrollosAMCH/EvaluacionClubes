@@ -4,11 +4,14 @@ namespace App\Http\Controllers\App;
 use App\RequisitoModel;
 use App\TemporadaModel;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\App\AppController;
 
-class EvaluacionController extends Controller
+class EvaluacionController extends AppController
 {
-    private $__vars = [];
+
+    public  function __construct(){
+        parent::__construct();
+    }
 
     public function listar(Request $request){
         $this->__vars['oEvaluacionesList'] = TemporadaModel::all();
