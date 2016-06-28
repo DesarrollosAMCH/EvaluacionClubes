@@ -45,7 +45,11 @@ class LoginController extends Controller
 
         if(!$error){
 
-            /*$oUser->save();*/
+            
+            $oUser->save();
+            $oClub->idUsuario = $oUser->id;
+            $oClub->save();
+            
 
             $data = array(
                 'id_club'   => $oClub->id,
@@ -53,7 +57,8 @@ class LoginController extends Controller
                 'email'     => MiembroModel::directorDeClub($oClub->id)->first()->email,
                 'username'  => $name,
                 'password'  => $password,
-                'token'     => $oUser->activation_token
+                'token'     => $oUser->activation_token,
+                'domain'    => App::make('url')->to('/')
             );
 
             $message = "Benvenido";
@@ -61,13 +66,33 @@ class LoginController extends Controller
             {
                 $message
                     ->to($data['email'], $data['club'])
-                    ->subject("Activación de Cuenta AMCH - ". $data['club']);
+                    ->subject("Activación de Cuenta - Regional AMCH");
             });
             return redirect('/register')->with(['alert'=>true,'type'=>'success', 'msg'=>'Se ha enviado un E-Mail al director del club '.$data['club'].' para que active el acceso.']);
         }else{
             return redirect('/register')->with(['alert'=>true,'type'=>'danger', 'msg'=> $msg]);
         }
+    }
 
+    public function activate($token, $club, $email){
+        $oClub = ClubModel::find($club);
+
+        if($oClub->usuario->activation_token === $token){
+            $oUser = User::find($oClub->usuario->id);
+            $oUser->active = 1;
+            $oUser->email = $email;
+
+            if( $oUser->save() ){
+                return redirect('/login')->with([
+                    'alert' => true,
+                    'type' => 'success',
+                    'msg' => 'El Club '. $oClub->nombre . ' ha sido activado'
+                    ]
+                );
+            }else{
+                return redirect('/404');
+            }
+        }
     }
 
     public function mailing(){

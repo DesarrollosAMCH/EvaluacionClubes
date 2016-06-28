@@ -68,7 +68,7 @@
                 <button type="submit" class="btn btn-primary block full-width m-b">Activar</button>
 
                 <p class="text-muted text-center"><small>Si tu club no aparece, puede deberse a que ya fue activado o a que no está registrado en nuestro campo</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="/">Ir al Inicio</a>
+                <a class="btn btn-sm btn-white btn-block" href="/login">Volver al Login</a>
             </form>
             <p class="m-t text-center"> <small>Regional de Conquistadores AMCH &copy; 2016</small> </p>
         </div>

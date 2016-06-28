@@ -12,7 +12,7 @@ class ClubModel extends Model
 
     public function campo(){return $this->belongsTo('App\CampoModel','idCampo','id');}
 
-    public function usuario(){return $this->hasOne('App\User', 'idUsuario');}
+    public function usuario(){return $this->hasOne('App\User', 'id');}
 
     public function tieneDirector(){
         $count = MiembroModel::directorDeClub($this->id)->count();

@@ -57,6 +57,11 @@
             </div>
             <div class="col-md-6">
                 <div class="ibox-content">
+                    @if (session('alert'))
+                        <div class="alert alert-{{ session('type') }}">
+                            {{ session('msg') }}
+                        </div>
+                    @endif
                     <form class="m-t" role="form">
                         <div class="form-group">
                             <select class="chosen-select form-control" required>

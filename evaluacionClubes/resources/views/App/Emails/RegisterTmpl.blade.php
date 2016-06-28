@@ -17,9 +17,9 @@
         <div style="width: 600px; margin:0 auto; text-align: justify;">
 
             <div id="header">
-                <img src="/assets/app/images/mailing/header.jpg" />
+                <img src="https://raw.githubusercontent.com/DesarrollosAMCH/EvaluacionClubes/master/evaluacionClubes/public/assets/app/images/mailing/header.jpg" />
             </div>
-            <h1>Convención 2015</h1>
+            <h1>Activa tu Cuenta</h1>
 
             <p>Estimado Director:</p>
 
@@ -37,7 +37,7 @@
 
             Por motivos de seguridad, solo tu puedes completar la activación ingresando al siguiente link: <br/>
 
-            <a href="http://{{ $domain }}/activate/{{ $token }}/{{ $id_club }}/{{ $email }}">Enlace de Activación</a>
+            <a href="{{ $domain }}/activate/{{ $token }}/{{ $id_club }}/{{ $email }}">Enlace de Activación</a>
 
             <br/>
 

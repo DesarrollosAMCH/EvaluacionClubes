@@ -24,5 +24,5 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function club(){return $this->belongsTo('App\ClubModel','idUser','id');}
+    public function club(){return $this->belongsTo('App\ClubModel','idUsuario','id');}
 }
