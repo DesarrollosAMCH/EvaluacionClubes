@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use Auth;
 
 use App\Http\Controllers\Controller;
 
@@ -18,6 +19,22 @@ class LoginController extends Controller
     public function login(Request $request){
         $this->__vars['clubesList'] = ClubModel::conUsuario()->get();
         return view('Login', $this->__vars);
+    }
+
+    public function doLogin(Request $request){
+        $email      = ClubModel::find($request->get('club'))->usuario->email;
+        $password   = $request->get('password');
+
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            // Authentication passed...
+            return redirect()->intended('app');
+        }else{
+            return redirect('/login');
+        }
+    }
+
+    public function logout(){
+        Auth::logout();
     }
 
     public function registerForm(Request $request){

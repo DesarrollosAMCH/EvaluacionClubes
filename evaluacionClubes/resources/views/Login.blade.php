@@ -62,9 +62,9 @@
                             {{ session('msg') }}
                         </div>
                     @endif
-                    <form class="m-t" role="form">
+                    <form action="/login" method="post" class="m-t" role="form">
                         <div class="form-group">
-                            <select class="chosen-select form-control" required>
+                            <select class="chosen-select form-control" required name="club">
                                 <option value="0">Seleccionar ...</option>
                                 @foreach($clubesList as $club)
                                     <option value="{{ $club->id }}">{{ $club->nombre }}</option>
@@ -72,7 +72,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Escriba su Contraseña" required="">
+                            <input type="password" name="password" class="form-control" placeholder="Escriba su Contraseña" required="">
                         </div>
                         <button type="submit" class="btn btn-primary block full-width m-b">Entrar</button>
 

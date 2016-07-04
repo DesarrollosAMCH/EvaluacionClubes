@@ -24,8 +24,8 @@
                     <tr>
                         <td>{{ $i }}</td>
                         <td>{{ $club->nombre }}</td>
-                        <td>{{ $club->zona()->get()->first()->nombre }}</td>
-                        <td>{{ $club->campo()->get()->first()->nombre }}</td>
+                        <td>{{ ($club->zona()->count())?$club->zona->nombre:'' }}</td>
+                        <td>{{ $club->campo->nombre }}</td>
                     </tr>
                     @endforeach
                     </tbody>

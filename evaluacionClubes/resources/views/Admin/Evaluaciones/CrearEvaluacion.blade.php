@@ -18,6 +18,7 @@
 
                 <div id="wizard">
                     <h3>Temporada</h3>
+
                     <section>
 
                         <form id="temporada_form">
@@ -97,11 +98,11 @@
                                     <?php $img_style = "display:none"?>
                                     <?php $form_style = ""?>
                                 @endif
+
                                 <div class="exists-img" style="text-align: center;{{ $img_style }}">
-                                    <img width="60%" data-baseurl="/" src="@if( isset($oTemporada) ){{ url($oTemporada->portada) }} @else {{ url(Input::old('portada')) }} @endif"    />
+                                    <img width="60%" data-baseurl="/" src="@if( isset($oTemporada) ){{ url($oTemporada->portada) }} @endif"    />
                                     <a style="display: block; margin-top: 10px;" class="btn btn-danger" id="chg-img">Cambiar portada</a>
                                 </div>
-
                                 <form action="/admin/tarjetas/upload" class="form-horizontal dropzone do-not-exists-img" id="my-dropzone" enctype="multipart/form-data" style="{{ $form_style }}">
                                     <div class="fallback">
                                         <input name="cover" type="file" />
@@ -126,7 +127,6 @@
 
                                 <form id="requisitos_form">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Categoria</label>
@@ -291,7 +291,7 @@
         };
 
         $(document).ready(function() {
-            $("#chg-img").click(function(){
+            $("#chg-img").cli(function(){
                 alert("ddd");
                 //showForm();
             });

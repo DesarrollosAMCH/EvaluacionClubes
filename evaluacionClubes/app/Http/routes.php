@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@home');
 Route::get('/login', 'LoginController@login');
+Route::post('/login', 'LoginController@doLogin');
+Route::get('/logout', 'LoginController@logout');
 Route::get('/register', 'LoginController@registerForm');
 Route::post('/register', 'LoginController@register');
 Route::get('/activate/{token}/{club}/{email}', 'LoginController@activate');
