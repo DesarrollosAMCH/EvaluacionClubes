@@ -220,6 +220,7 @@
             var id = form.find('input[name="requisito[\'id\']"]').val();
             var extra = (id == "")?'/'+id:'';
             var url = '/admin/evaluaciones/guardar-requisito' + extra;
+            alert(url);return;
             var data = {
                 categoria   : form.find('select[name="requisito[\'categoria\']"]').val(),
                 nombre      : form.find('input[name="requisito[\'nombre\']"]').val(),
