@@ -218,7 +218,8 @@
 
         saveRequisito = function(form){
             var id = form.find('input[name="requisito[\'id\']"]').val();
-            var url = '/admin/evaluaciones/guardar-requisito/' + id;
+            var extra = (id == "")?'/'+id:'';
+            var url = '/admin/evaluaciones/guardar-requisito' + extra;
             var data = {
                 categoria   : form.find('select[name="requisito[\'categoria\']"]').val(),
                 nombre      : form.find('input[name="requisito[\'nombre\']"]').val(),
