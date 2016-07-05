@@ -29,7 +29,11 @@ class LoginController extends Controller
             // Authentication passed...
             return redirect()->intended('app');
         }else{
-            return redirect('/login');
+            return redirect('/login')->with([
+                'alert'=> true,
+                'type'=> 'danger',
+                'msg'=> 'Su autenticación ha fallado.'
+            ]);
         }
     }
 
