@@ -291,7 +291,7 @@
         };
 
         $(document).ready(function() {
-            $("#chg-img").cli(function(){
+            $("#chg-img").click(function(){
                 alert("ddd");
                 //showForm();
             });
