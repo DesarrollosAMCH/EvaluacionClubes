@@ -100,7 +100,7 @@
                                 @endif
 
                                 <div class="exists-img" style="text-align: center;{{ $img_style }}">
-                                    <img width="60%" data-baseurl="/" src="@if( isset($oTemporada) ){{ url($oTemporada->portada) }} @endif"    />
+                                    <img width="60%" data-baseurl="/" src="@if( isset($oTemporada) && strlen($oTemporada->portada) > 0) {{ url($oTemporada->portada) }} @endif"    />
                                     <a style="display: block; margin-top: 10px;" class="btn btn-danger" id="chg-img">Cambiar portada</a>
                                 </div>
                                 <form action="/admin/tarjetas/upload" class="form-horizontal dropzone do-not-exists-img" id="my-dropzone" enctype="multipart/form-data" style="{{ $form_style }}">
