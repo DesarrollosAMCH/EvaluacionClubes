@@ -200,7 +200,7 @@
     <script src="{{ URL::asset('assets/_admin/js/utils.js') }}"></script>
     <script>
         saveTemporada = function(form){
-            var url = '/admin/evaluaciones/guardar-temorada/';
+            var url = '/admin/evaluaciones/guardar-temorada';
             var data = {
                 nombre_temporada : form.find("input[name='nombre_temporada']").val(),
                 daterange : form.find("input[name='daterange']").val(),
