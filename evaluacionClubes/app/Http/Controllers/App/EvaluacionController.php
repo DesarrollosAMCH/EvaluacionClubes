@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\App;
 
+use App\CategoriaRequisitoModel;
 use App\RequisitoModel;
 use App\TemporadaModel;
 use Illuminate\Http\Request;
@@ -18,8 +19,12 @@ class EvaluacionController extends AppController
         return view('App/ListarEvaluaciones', $this->__vars);
     }
 
-    public function requisitos($id){
-        $this->__vars['oEvaluacion'] = TemporadaModel::findTreeToArray($id);
+    public function requisitos($id_temporada){
+        $oEveluación    = TemporadaModel::findTreeToArray($id_temporada);
+        $categoriasList = TemporadaModel::find($id_temporada)->getCategoriasRequisitos();
+        $this->__vars['oEvaluacion']        = $oEveluación;
+        $this->__vars['categoriasList']     = $categoriasList;
+
         return view('App/ListarRequisitos', $this->__vars);
     }
 

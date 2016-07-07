@@ -101,7 +101,7 @@
 
                                 <div class="exists-img" style="text-align: center;{{ $img_style }}">
                                     <img width="60%" data-baseurl="/" src="@if( isset($oTemporada) && strlen($oTemporada->portada) > 0) {{ url($oTemporada->portada) }} @endif"    />
-                                    <a style="display: block; margin-top: 10px;" class="btn btn-danger" id="chg-img">Cambiar portada</a>
+                                    <a href="javascript:void(0);" style="display: block; margin-top: 10px;" class="btn btn-danger" id='chg-img'>Cambiar portada</a>
                                 </div>
                                 <form action="/admin/tarjetas/upload" class="form-horizontal dropzone do-not-exists-img" id="my-dropzone" enctype="multipart/form-data" style="{{ $form_style }}">
                                     <div class="fallback">
@@ -207,8 +207,10 @@
                 //temporada_id : form.find('input[name="temporada_id"]').val(),
                 _token: form.find("input[name='_token']").val()
             };
-            var id_temporada = form.find('input[name="temporada_id"]').val();
-            $.post(url + id_temporada, data, function(response){
+            var id = form.find('input[name="temporada_id"]').val();
+            var extra = (id.length > 0)?'/'+id:'';
+
+            $.post(url + extra, data, function(response){
                 response = $.parseJSON(response);
                 console.log(response);
                 var id_temporada = response.data.id;
@@ -292,9 +294,9 @@
         };
 
         $(document).ready(function() {
-            $("#chg-img").click(function(){
-                alert("ddd");
-                //showForm();
+
+            $('body').on('click','#chg-img',function(e){
+                showForm();
             });
 
             $("#wizard").steps({

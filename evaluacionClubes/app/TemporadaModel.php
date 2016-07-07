@@ -24,4 +24,15 @@ class TemporadaModel extends Model
             return false;
         }
     }
+
+
+    public function getCategoriasRequisitos(){
+        $requisitosList = $this->requisitos;
+        $categorias = [];
+
+        foreach( $requisitosList as $requisito ){
+            $categorias[] = $requisito->categoria;
+        }
+        return array_unique($categorias);
+    }
 }
