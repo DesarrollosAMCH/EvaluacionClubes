@@ -1,11 +1,16 @@
 <?php
 namespace App\Http\Controllers\App;
 
-use App\CategoriaRequisitoModel;
+use Illuminate\Http\Request;
+use Auth;
+
+use App\RequisitoRealizadoModel;
 use App\RequisitoModel;
 use App\TemporadaModel;
-use Illuminate\Http\Request;
-use App\Http\Controllers\App\AppController;
+use App\MiembroModel;
+
+
+
 
 class EvaluacionController extends AppController
 {
@@ -28,8 +33,25 @@ class EvaluacionController extends AppController
         return view('App/ListarRequisitos', $this->__vars);
     }
 
-    public function requisito($id){
-        $this->__vars['oRequisito'] = RequisitoModel::find($id);
+    public function requisito($id_requisito){
+        $this->__vars['oRequisito'] = RequisitoModel::find($id_requisito);
         return view('App/CompletarRequisito', $this->__vars);
+    }
+
+    public function guardarRequisito(Request $request, $id_requisito){
+        $inputs = $request->all();
+        $oUser = Auth::user();
+        $oMiembro = MiembroModel::where('email', $oUser->email)->get()->first();
+
+        $oRequisito = new RequisitoRealizadoModel();
+
+        $oRequisito->fecha          = $inputs['fecha'];
+        $oRequisito->lugar          = $inputs['donde'];
+        $oRequisito->contenido      = $inputs['comentario'];
+        $oRequisito->idRequisito    = $id_requisito;
+        $oRequisito->idClub         = $oMiembro->idClub;
+
+        $oRequisito->save();
+
     }
 }

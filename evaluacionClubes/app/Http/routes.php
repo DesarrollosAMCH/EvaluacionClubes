@@ -41,6 +41,7 @@ Route::post('/admin/evaluaciones/upload/{id}', 'Admin\EvaluacionController@uploa
 Route::get('/app', 'App\EvaluacionController@listar');
 Route::get('/app/requisitos/{id_evaluacion}', 'App\EvaluacionController@requisitos');
 Route::get('/app/requisito/{id_requisito}', 'App\EvaluacionController@requisito');
+Route::post('/app/requisito/guardar-requisito/{id_requisito}', 'App\EvaluacionController@guardarRequisito');
 
 /**
  * Clubes routes

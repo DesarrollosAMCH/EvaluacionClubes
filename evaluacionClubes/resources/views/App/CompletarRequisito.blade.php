@@ -8,26 +8,27 @@
 
             <h6 class="offset-7">{{ $oRequisito->descripcion }}</h6>
 
-            <form class='rd-mailform rd-mailform-contact text-center' method="post" action="bat/rd-mailform.php">
+            <!--action = bat/rd-mailform.php-->
+            <form class='rd-mailform rd-mailform-contact text-center' method="post" action="{{ url('/app/requisito/guardar-requisito/') . '/'.$oRequisito->id }}">
                 <!-- RD Mailform Type -->
-                <input type="hidden" name="form-type" value="contact"/>
+                <input type="hidden" name="form-type" value="requisito"/>
                 <!-- END RD Mailform Type -->
 
                 <div class="form-group form-group-bottom" >
                     <label class="form-label date" data-add-placeholder style="text-align: left;" for="mailform-input-date">¿Cuando?</label>
-                    <input type="date" id="mailform-input-date" name="birthday" data-constraints="@Date @NotEmpty"/>
+                    <input type="date" id="mailform-input-date" name="fecha" data-constraints="@Date @NotEmpty"/>
                 </div>
 
                 <div class="form-group form-group-bottom">
                     <label class="form-label" data-add-placeholder for="mailform-input-address">¿Donde?</label>
-                    <input id="mailform-input-address" type="text" name="name" data-constraints="@NotEmpty @LettersOnly"/>
+                    <input id="mailform-input-address" type="text" name="donde" data-constraints="@NotEmpty @LettersOnly"/>
                 </div>
 
                 <div></div>
 
                 <div class="form-group textarea">
                     <label class="form-label" data-add-placeholder for="mailform-input-textarea-1">¿Como?</label>
-                    <textarea id="mailform-input-textarea-1" name="message" data-constraints="@NotEmpty"></textarea>
+                    <textarea id="mailform-input-textarea-1" name="comentario" data-constraints="@NotEmpty"></textarea>
                 </div>
 
                 <!--

@@ -4,7 +4,6 @@
 <section class="well well7">
       <div class="container">
 
-
         <div class="resp-tabs">
           <ul class="resp-tabs-list">
             <li >Todas las categorías</li>
@@ -14,9 +13,7 @@
           </ul>
           <div class="resp-tabs-container">
 
-            <!--
-              Muestra todos los requisitos agrupados
-            -->
+            <!--Muestra todos los requisitos agrupados-->
             <div>
               <div class="row">
                 @foreach( $oEvaluacion->requisitos as $oRequisito)
@@ -48,10 +45,7 @@
               </div>
             </div>
 
-
-            <!--
-              Muestra los requisitos separados por categoría
-            -->
+            <!--Muestra los requisitos separados por categoría-->
             @foreach( $categoriasList as $oCategoria )
             <div>
               <div class="row">
