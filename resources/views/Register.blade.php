@@ -16,7 +16,7 @@
     <link href="/assets/_admin/css/style.css" rel="stylesheet">
 
     <!--Chosen Plugin-->
-    <link href="css/back/plugins/chosen/chosen.css" rel="stylesheet">
+    <link href="/assets/_admin/css/plugins/chosen/chosen.css" rel="stylesheet">
 
 
     <style>
