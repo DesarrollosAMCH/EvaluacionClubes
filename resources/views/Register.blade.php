@@ -10,7 +10,7 @@
 
     <link href="/assets/_admin/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/_admin/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="css/back/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/assets/_admin/css/plugins/iCheck/custom.css" rel="stylesheet">
 
     <link href="/assets/_admin/css/animate.css" rel="stylesheet">
     <link href="/assets/_admin/css/style.css" rel="stylesheet">
@@ -75,14 +75,14 @@
     </div>
 
     <!-- Mainly scripts -->
-    <script src="js/front/jquery-2.1.1.js"></script>
-    <script src="js/front/bootstrap.min.js"></script>
+    <script src="/assets/_admin/js/front/jquery-2.1.1.js"></script>
+    <script src="/assets/_admin/js/front/bootstrap.min.js"></script>
 
     <!--JQuery Form Validation-->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
 
-    <script src="js/plugins/chosen/chosen.jquery.js"></script>
-    <script src="js/register.js"></script>
+    <script src="/assets/_admin/js/plugins/chosen/chosen.jquery.js"></script>
+    <script src="/assets/_admin/js/register.js"></script>
 </body>
 
 </html>
