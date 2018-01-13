@@ -75,8 +75,8 @@
     </div>
 
     <!-- Mainly scripts -->
-    <script src="/assets/_admin/js/front/jquery-2.1.1.js"></script>
-    <script src="/assets/_admin/js/front/bootstrap.min.js"></script>
+    <script src="/assets/_admin/js/jquery-2.1.1.js"></script>
+    <script src="/assets/_admin/js/bootstrap.min.js"></script>
 
     <!--JQuery Form Validation-->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
