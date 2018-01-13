@@ -54,7 +54,7 @@
 
             Maranatha!
         </p>
-        <div class="countdown" data-type="until" data-time="8 Jul 2016 15:00"></div>
+        <div class="countdown" data-type="until" data-time="8 Mar 2018 15:00"></div>
         <!--<a href="#" class="btn btn-bord  btn-primary">find out more</a>-->
     </div>
 </section>
